@@ -9,6 +9,9 @@ const httpOp = {
 }
 const url= 'http://localhost:3000'
 
+var tst = url as string
+var tst2 = <string> url 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +19,15 @@ export class ApiRestService {
 
   constructor(private http: HttpClient) { 
     
+
+    
   }
+
   private handleError<T> (operation = 'operation',result?:T){
     return (error:any):  Observable<T>=>{
-      console.error()
+      console.error(error);
+
+      return of(result as T)
     }
   }
 }
